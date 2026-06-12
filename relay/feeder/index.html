@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RadiaCode Feeder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <h1>RadiaCode Feeder</h1>
+        <p>Connect a RadiaCode device here and relay live readings to the glasses display.</p>
+      </div>
+      <div class="status-stack">
+        <div id="status-pill" class="status-pill">Idle</div>
+        <div id="last-message" class="last-message">No messages</div>
+      </div>
+    </header>
+
+    <section class="panel">
+      <label for="stream-id">Stream ID</label>
+      <div class="stream-row">
+        <input id="stream-id" type="text" autocomplete="off" spellcheck="false">
+        <button id="new-id-button" type="button">New ID</button>
+      </div>
+
+      <label for="relay-url">Relay URL</label>
+      <input id="relay-url" type="url" autocomplete="off" spellcheck="false">
+
+      <label for="glasses-url">Glasses URL</label>
+      <div class="stream-row">
+        <input id="glasses-url" type="url" readonly>
+        <button id="copy-button" type="button">Copy</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="actions">
+        <button id="connect-ble-button" type="button">Connect BLE</button>
+        <button id="connect-usb-button" type="button">Connect USB</button>
+        <button id="disconnect-button" type="button" disabled>Disconnect</button>
+      </div>
+      <p id="connection-note" class="note">Ready.</p>
+    </section>
+
+    <section class="readout-grid">
+      <div class="readout">
+        <div class="label">Dose Rate</div>
+        <div><span id="dose-rate">--</span> <span class="unit">uSv/h</span></div>
+      </div>
+      <div class="readout">
+        <div class="label">Counts</div>
+        <div><span id="count-rate">--</span> <span class="unit">cps</span></div>
+      </div>
+      <div class="readout">
+        <div class="label">Dose Error</div>
+        <div><span id="dose-error">--</span> <span class="unit">%</span></div>
+      </div>
+      <div class="readout">
+        <div class="label">Sent Events</div>
+        <div><span id="sent-count">0</span></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="label">Log</div>
+      <pre id="log" class="log"></pre>
+    </section>
+  </main>
+
+  <script src="radiacode.js"></script>
+  <script src="feeder.js"></script>
+</body>
+</html>

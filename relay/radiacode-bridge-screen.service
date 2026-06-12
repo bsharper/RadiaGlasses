@@ -1,0 +1,22 @@
+[Unit]
+Description=RadiaCode bridge relay screen session
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=deploy
+Group=deploy
+WorkingDirectory=/home/deploy/radiaglasses-relay
+Environment=TERM=xterm-256color
+
+# Remove a stale session with the same name before starting.
+ExecStartPre=-/usr/bin/screen -S radiaglasses-relay -X quit
+ExecStart=/usr/bin/screen -dmS radiaglasses-relay ./start
+ExecStop=/usr/bin/screen -S radiaglasses-relay -X quit
+ExecReload=/usr/bin/screen -S radiaglasses-relay -X quit
+ExecReload=/usr/bin/screen -dmS radiaglasses-relay ./start
+
+[Install]
+WantedBy=multi-user.target

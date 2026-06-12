@@ -1,0 +1,15 @@
+{
+  "name": "radiacode-glasses-display",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Meta Display glasses viewport for RadiaCode readings",
+  "scripts": {
+    "bridge": "node bridge-server.js",
+    "relay": "PORT=8791 BASE_PATH=/bridge node relay-server.js"
+  },
+  "dependencies": {
+    "debug": "^4.4.1",
+    "usb": "^2.16.0",
+    "webbluetooth": "^1.0.1"
+  }
+}

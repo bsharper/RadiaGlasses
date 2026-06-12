@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=600, height=600, initial-scale=1.0, user-scalable=no">
+  <title>RadiaCode Glasses</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="glasses-viewport" aria-label="Meta Display glasses viewport">
+
+    <section class="radiacode-panel" aria-live="polite">
+      <header class="status-row">
+        <div>
+          <div class="eyebrow">RadiaCode</div>
+          <div id="device-label" class="device-label">No device</div>
+        </div>
+        <div class="status-stack">
+          <div id="status-pill" class="status-pill status-idle">Idle</div>
+          <div id="last-update" class="last-update">No updates</div>
+        </div>
+      </header>
+
+      <div class="dose-block">
+        <div id="dose-rate" class="dose-value">--</div>
+        <div class="dose-unit">uSv/h</div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric">
+          <div class="metric-label">Counts</div>
+          <div><span id="count-rate" class="metric-value">--</span> <span class="metric-unit">cps</span></div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Dose Error</div>
+          <div><span id="dose-error" class="metric-value">--</span> <span class="metric-unit">%</span></div>
+        </div>
+        <div class="metric chart-card">
+          <div class="metric-label">uSv/h Trend</div>
+          <canvas id="dose-chart" class="dose-chart" width="480" height="112" aria-label="uSv/h trend chart"></canvas>
+        </div>
+      </div>
+
+      <footer class="control-row">
+        <div id="signal-indicator" class="signal-indicator" aria-label="Connection signal"></div>
+        <div id="connection-note" class="connection-note">Checking transport...</div>
+      </footer>
+    </section>
+  </main>
+
+  <script src="radiacode.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

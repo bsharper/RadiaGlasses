@@ -1,0 +1,278 @@
+:root {
+  --viewport-width: 600px;
+  --viewport-height: 600px;
+  --viewport-bg: #000;
+  --image-fit: cover;
+  --image-position: center center;
+  --image-opacity: 0.16;
+  --image-scale: 1;
+  --safe-accent: #35f08a;
+  --warn-accent: #ffd166;
+  --danger-accent: #ff4d5e;
+  --text-primary: #f8fbff;
+  --text-muted: #9aa6b5;
+  --panel-bg: rgba(0, 0, 0, 0.72);
+  --panel-border: rgba(255, 255, 255, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: var(--viewport-width);
+  height: var(--viewport-height);
+  overflow: hidden;
+  background: var(--viewport-bg);
+}
+
+body {
+  position: relative;
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.glasses-viewport {
+  width: var(--viewport-width);
+  height: var(--viewport-height);
+  overflow: hidden;
+  background: var(--viewport-bg);
+  position: relative;
+}
+
+.viewport-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: var(--image-fit);
+  object-position: var(--image-position);
+  opacity: var(--image-opacity);
+  transform: scale(var(--image-scale));
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+.radiacode-panel {
+  position: absolute;
+  inset: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.82), var(--panel-bg));
+  border: 1px solid var(--panel-border);
+  box-shadow: inset 0 0 40px rgba(53, 240, 138, 0.08), 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.status-row,
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.eyebrow,
+.metric-label {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.device-label {
+  margin-top: 4px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.status-pill {
+  min-width: 92px;
+  padding: 8px 12px;
+  border: 1px solid currentColor;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.status-stack {
+  min-width: 116px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.last-update {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 800;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.status-live {
+  color: var(--safe-accent);
+  box-shadow: 0 0 18px rgba(53, 240, 138, 0.25);
+}
+
+.status-warn {
+  color: var(--warn-accent);
+  box-shadow: 0 0 18px rgba(255, 209, 102, 0.22);
+}
+
+.status-danger {
+  color: var(--danger-accent);
+  box-shadow: 0 0 18px rgba(255, 77, 94, 0.28);
+}
+
+.dose-block {
+  text-align: center;
+}
+
+.dose-value {
+  color: var(--safe-accent);
+  font-size: 118px;
+  font-weight: 800;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 24px rgba(53, 240, 138, 0.25);
+}
+
+.dose-unit {
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.metric {
+  min-height: 70px;
+  padding: 10px 12px;
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.chart-card {
+  grid-column: 1 / -1;
+  min-height: 138px;
+}
+
+.dose-chart {
+  width: 100%;
+  height: 108px;
+  display: block;
+  margin-top: 4px;
+}
+
+.metric-value {
+  color: var(--text-primary);
+  font-size: 26px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-unit {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.signal-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 72px;
+  height: 52px;
+}
+
+.signal-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 28px;
+}
+
+.signal-bar {
+  display: block;
+  width: 6px;
+  border-radius: 1px;
+  background: var(--panel-border);
+}
+
+.signal-bar.bar-1 { height: 7px; }
+.signal-bar.bar-2 { height: 13px; }
+.signal-bar.bar-3 { height: 20px; }
+.signal-bar.bar-4 { height: 28px; }
+
+.signal-level-1 .bar-1 { background: var(--danger-accent); }
+
+.signal-level-2 .bar-1,
+.signal-level-2 .bar-2 { background: var(--warn-accent); }
+
+.signal-level-3 .bar-1,
+.signal-level-3 .bar-2,
+.signal-level-3 .bar-3 { background: var(--safe-accent); }
+
+.signal-level-4 .bar-1,
+.signal-level-4 .bar-2,
+.signal-level-4 .bar-3,
+.signal-level-4 .bar-4 { background: var(--safe-accent); }
+
+.signal-label {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.signal-usb-badge {
+  padding: 8px 12px;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.connection-note {
+  flex: 1;
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: right;
+}
+
+body.alert-warn .dose-value {
+  color: var(--warn-accent);
+  text-shadow: 0 0 24px rgba(255, 209, 102, 0.28);
+}
+
+body.alert-danger .dose-value {
+  color: var(--danger-accent);
+  text-shadow: 0 0 24px rgba(255, 77, 94, 0.32);
+}
+
+body.show-safe-area::after {
+  content: "";
+  position: absolute;
+  inset: 24px;
+  border: 1px solid rgba(0, 212, 255, 0.7);
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.35);
+  pointer-events: none;
+}
